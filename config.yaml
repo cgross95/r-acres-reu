@@ -11,7 +11,7 @@
 carpentry: 'swc'
 
 # Overall title for pages.
-title: 'R for Reproducible Scientific Analysis'
+title: 'Introduction to R'
 
 # Date the lesson was created (YYYY-MM-DD, this is empty by default)
 created: '2015-04-18'
@@ -27,13 +27,13 @@ life_cycle: 'stable'
 license: 'CC-BY 4.0'
 
 # Link to the source repository for this lesson
-source: 'https://github.com/swcarpentry/r-novice-gapminder'
+source: 'https://github.com/cgross95/r-acres-reu'
 
 # Default branch of your lesson
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'grosscra@msu.edu'
 
 # Navigation ------------------------------------------------
 #
@@ -91,6 +91,6 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-url: 'https://swcarpentry.github.io/r-novice-gapminder'
+url: 'https://cgross95.github.io/r-acres-reu'
 analytics: carpentries
 lang: en
