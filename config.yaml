@@ -33,7 +33,7 @@ source: 'https://github.com/cgross95/r-acres-reu'
 branch: 'main'
 
 # Who to contact if there are any issues
-contact: 'team@carpentries.org'
+contact: 'grosscra@msu.edu'
 
 # Navigation ------------------------------------------------
 #
@@ -91,6 +91,6 @@ profiles:
 # sandpaper and varnish versions) should live
 
 
-url: 'https://swcarpentry.github.io/r-novice-gapminder'
+url: 'https://cgross95.github.io/r-acres-reu'
 analytics: carpentries
 lang: en
