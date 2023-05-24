@@ -60,30 +60,16 @@ contact: 'grosscra@msu.edu'
 # Order of episodes in your lesson
 episodes: 
 - 01-rstudio-intro.Rmd
-- 02-project-intro.Rmd
-- 03-seeking-help.Rmd
-- 04-data-structures-part1.Rmd
 - 05-data-structures-part2.Rmd
 - 06-data-subsetting.Rmd
-- 07-control-flow.Rmd
 - 08-plot-ggplot2.Rmd
-- 09-vectorization.Rmd
-- 10-functions.Rmd
-- 11-writing-data.Rmd
-- 12-plyr.Rmd
-- 13-dplyr.Rmd
-- 14-tidyr.Rmd
-- 15-knitr-markdown.Rmd
-- 16-wrap-up.Rmd
 
 # Information for Learners
 learners: 
+- 02-project-intro.Rmd
 
 # Information for Instructors
 instructors: 
-
-# Learner Profiles
-profiles: 
 
 # Customisation ---------------------------------------------
 #
