@@ -7,8 +7,6 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- Add and remove rows or columns.
-- Append two data frames.
 - Display basic properties of data frames including size and class of the columns, names, and first few rows.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -20,284 +18,27 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+## Working with data
 
-At this point, you've seen it all: in the last lesson, we toured all the basic
-data types and data structures in R. Everything you do will be a manipulation of
-those tools. But most of the time, the star of the show is the data frame—the table that we created by loading information from a csv file. In this lesson, we'll learn a few more things
-about working with data frames.
-
-## Adding columns and rows in data frames
-
-We already learned that the columns of a data frame are vectors, so that our
-data are consistent in type throughout the columns. As such, if we want to add a
-new column, we can start by making a new vector:
-
-
+Let's work with a realistic dataset in data frame. First, we need to set up our environment:
 
 
 ```r
-age <- c(2, 3, 5)
-cats
+dir.create("~/R_tutorial/data", recursive = TRUE)
+setwd("~/R_tutorial")
 ```
 
-```{.output}
-    coat weight likes_string
-1 calico    2.1            1
-2  black    5.0            0
-3  tabby    3.2            1
-```
+This makes sure that everything we do from now on happens relative to the `~/R_tutorial` directory. In practice, for better reproducibility, you'll want to set up an [R project](learners/02-project-intro.Rmd).
 
-We can then add this as a column via:
+Now let's download [the data](https://swcarpentry.github.io/r-novice-gapminder/data/gapminder_data.csv):
 
 
 ```r
-cbind(cats, age)
+download.file("https://swcarpentry.github.io/r-novice-gapminder/data/gapminder_data.csv",
+              destfile = "data/gapminder_data.csv")
 ```
 
-```{.output}
-    coat weight likes_string age
-1 calico    2.1            1   2
-2  black    5.0            0   3
-3  tabby    3.2            1   5
-```
-
-Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the data frame, it would fail:
-
-
-```r
-age <- c(2, 3, 5, 12)
-cbind(cats, age)
-```
-
-```{.error}
-Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 4
-```
-
-```r
-age <- c(2, 3)
-cbind(cats, age)
-```
-
-```{.error}
-Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2
-```
-
-Why didn't this work? Of course, R wants to see one element in our new column
-for every row in the table:
-
-
-```r
-nrow(cats)
-```
-
-```{.output}
-[1] 3
-```
-
-```r
-length(age)
-```
-
-```{.output}
-[1] 2
-```
-
-So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwrite the content of cats with our new data frame.
-
-
-```r
-age <- c(2, 3, 5)
-cats <- cbind(cats, age)
-```
-
-Now how about adding rows? We already know that the rows of a
-data frame are lists:
-
-
-```r
-newRow <- list("tortoiseshell", 3.3, TRUE, 9)
-cats <- rbind(cats, newRow)
-```
-
-Let's confirm that our new row was added correctly. 
-
-
-```r
-cats
-```
-
-```{.output}
-           coat weight likes_string age
-1        calico    2.1            1   2
-2         black    5.0            0   3
-3         tabby    3.2            1   5
-4 tortoiseshell    3.3            1   9
-```
-
-
-## Removing rows
-
-We now know how to add rows and columns to our data frame in R. Now let's learn to remove rows. 
-
-
-```r
-cats
-```
-
-```{.output}
-           coat weight likes_string age
-1        calico    2.1            1   2
-2         black    5.0            0   3
-3         tabby    3.2            1   5
-4 tortoiseshell    3.3            1   9
-```
-
-We can ask for a data frame minus the last row:
-
-
-```r
-cats[-4, ]
-```
-
-```{.output}
-    coat weight likes_string age
-1 calico    2.1            1   2
-2  black    5.0            0   3
-3  tabby    3.2            1   5
-```
-
-Notice the comma with nothing after it to indicate that we want to drop the entire fourth row.
-
-Note: we could also remove several rows at once by putting the row numbers
-inside of a vector, for example: `cats[c(-3,-4), ]`
-
-
-## Removing columns
-
-We can also remove columns in our data frame. What if we want to remove the column "age". We can remove it in two ways, by variable number or by index.
-
-
-```r
-cats[,-4]
-```
-
-```{.output}
-           coat weight likes_string
-1        calico    2.1            1
-2         black    5.0            0
-3         tabby    3.2            1
-4 tortoiseshell    3.3            1
-```
-
-Notice the comma with nothing before it, indicating we want to keep all of the rows.
-
-Alternatively, we can drop the column by using the index name and the `%in%` operator. The `%in%` operator goes through each element of its left argument, in this case the names of `cats`, and asks, "Does this element occur in the second argument?"
-
-
-```r
-drop <- names(cats) %in% c("age")
-cats[,!drop]
-```
-
-```{.output}
-           coat weight likes_string
-1        calico    2.1            1
-2         black    5.0            0
-3         tabby    3.2            1
-4 tortoiseshell    3.3            1
-```
-
-We will cover subsetting with logical operators like `%in%` in more detail in the next episode. See the section [Subsetting through other logical operations](06-data-subsetting.Rmd)
-
-## Appending to a data frame
-
-The key to remember when adding data to a data frame is that *columns are
-vectors and rows are lists.* We can also glue two data frames
-together with `rbind`:
-
-
-```r
-cats <- rbind(cats, cats)
-cats
-```
-
-```{.output}
-           coat weight likes_string age
-1        calico    2.1            1   2
-2         black    5.0            0   3
-3         tabby    3.2            1   5
-4 tortoiseshell    3.3            1   9
-5        calico    2.1            1   2
-6         black    5.0            0   3
-7         tabby    3.2            1   5
-8 tortoiseshell    3.3            1   9
-```
-
-But now the row names are unnecessarily complicated. We can remove the rownames,
-and R will automatically re-name them sequentially:
-
-
-```r
-rownames(cats) <- NULL
-cats
-```
-
-```{.output}
-           coat weight likes_string age
-1        calico    2.1            1   2
-2         black    5.0            0   3
-3         tabby    3.2            1   5
-4 tortoiseshell    3.3            1   9
-5        calico    2.1            1   2
-6         black    5.0            0   3
-7         tabby    3.2            1   5
-8 tortoiseshell    3.3            1   9
-```
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-## Challenge 1
-
-You can create a new data frame right from within R with the following syntax:
-
-
-```r
-df <- data.frame(id = c("a", "b", "c"),
-                 x = 1:3,
-                 y = c(TRUE, TRUE, FALSE))
-```
-
-Make a data frame that holds the following information for yourself:
-
-- first name
-- last name
-- lucky number
-
-Then use `rbind` to add an entry for the people sitting beside you.
-Finally, use `cbind` to add a column with each person's answer to the question, "Is it time for coffee break?"
-
-:::::::::::::::  solution
-
-## Solution to Challenge 1
-
-
-```r
-df <- data.frame(first = c("Grace"),
-                 last = c("Hopper"),
-                 lucky_number = c(0))
-df <- rbind(df, list("Marie", "Curie", 238) )
-df <- cbind(df, coffeetime = c(TRUE,TRUE))
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-## Realistic example
-
-So far, you have seen the basics of manipulating data frames with our cat data;
-now let's use those skills to digest a more realistic dataset. Let's read in the
-`gapminder` dataset that we downloaded previously:
+And finally, we can read it into a variable
 
 
 ```r
@@ -310,17 +51,7 @@ gapminder <- read.csv("data/gapminder_data.csv")
 
 - Another type of file you might encounter are tab-separated value files (.tsv). To specify a tab as a separator, use `"\\t"` or `read.delim()`.
 
-- Files can also be downloaded directly from the Internet into a local
-  folder of your choice onto your computer using the `download.file` function.
-  The `read.csv` function can then be executed to read the downloaded file from the download location, for example,
-
-
-```r
-download.file("https://raw.githubusercontent.com/swcarpentry/r-novice-gapminder/gh-pages/_episodes_rmd/data/gapminder_data.csv", destfile = "data/gapminder_data.csv")
-gapminder <- read.csv("data/gapminder_data.csv")
-```
-
-- Alternatively, you can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
+- You can also read in files directly into R from the Internet by replacing the file paths with a web address in `read.csv`. One should note that in doing this no local copy of the csv file is first saved onto your computer. For example,
 
 
 ```r
@@ -329,9 +60,6 @@ gapminder <- read.csv("https://raw.githubusercontent.com/swcarpentry/r-novice-ga
 
 - You can read directly from excel spreadsheets without
   converting them to plain text first by using the [readxl](https://cran.r-project.org/package=readxl) package.
-  
-- The argument "stringsAsFactors" can be useful to tell R how to read strings either as factors or as character strings. In R versions after 4.0, all strings are read-in as characters by default, but in earlier versions of R, strings are read-in as factors by default. For more information, see the call-out in [the previous episode](https://swcarpentry.github.io/r-novice-gapminder/04-data-structures-part1.html#callout2). 
-  
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -377,7 +105,18 @@ summary(gapminder)
  Max.   :82.60   Max.   :113523.1  
 ```
 
-Along with the `str` and `summary` functions, we can examine individual columns of the data frame with our `typeof` function:
+To extract a column, we can use the `$` operator. We use `head` to just see the first few entries:
+
+
+```r
+head(gapminder$lifeExp)
+```
+
+```{.output}
+[1] 28.801 30.332 31.997 34.020 36.088 38.438
+```
+
+We can examine the types of individual columns of the data frame with the `typeof` function:
 
 
 ```r
@@ -404,6 +143,8 @@ str(gapminder$country)
  chr [1:1704] "Afghanistan" "Afghanistan" "Afghanistan" "Afghanistan" ...
 ```
 
+No matter how complicated data gets, in R, it is always one of 5 main types: `double`, `integer`, `complex`, `logical`, and `character`.
+
 We can also interrogate the data frame for information about its dimensions;
 remembering that `str(gapminder)` said there were 1704 observations of 6
 variables in gapminder, what do you think the following will produce, and why?
@@ -418,8 +159,30 @@ length(gapminder)
 ```
 
 A fair guess would have been to say that the length of a data frame would be the
-number of rows it has (1704), but this is not the case; remember, a data frame
-is a *list of vectors and factors*:
+number of rows it has (1704), but this is not the case. Data frames are stored as lists of vectors, so the length is the number of separate columns of data.
+
+::: callout
+
+## Lists vs vectors
+
+What's the difference between a list and a vector in R? A vector is a collection of objects of the same type:
+
+
+```r
+chr_vec <- c('a', 'b', 'c')
+int_vec <- c(1, 2, 3)
+```
+
+A list on the other hand can contain multiple types:
+
+
+```r
+ex_list <- list_example <- list(1, "a", TRUE, 1+4i)
+```
+
+:::
+
+A data frame is nothing more than a fancy list!
 
 
 ```r
@@ -500,15 +263,19 @@ head(gapminder)
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 2
+## Challenge 1
 
 It's good practice to also check the last few lines of your data and some in the middle. How would you do this?
 
-Searching for ones specifically in the middle isn't too hard, but we could ask for a few lines at random. How would you code this?
+*Hint*: You can get help on a command by typing `?` before the command name in the console, e.g., `?head`.
+
+Searching for lines specifically in the middle isn't too hard, but we could ask for a few lines at random. If you have time after finishing the other challenges, think of a way to code this.
+
+*Hint*: You can search for commands by typing `??` before a search term, e.g., `??random`. 
 
 :::::::::::::::  solution
 
-## Solution to Challenge 2
+## Solution to Challenge 1
 
 To check the last few lines it's relatively simple as R already has a function for this:
 
@@ -537,18 +304,16 @@ into a script file so we can come back to it later.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 3
+## Challenge 2
 
-Go to file -> new file -> R script, and write an R script
-to load in the gapminder dataset. Put it in the `scripts/`
-directory and add it to version control.
+Make a `scripts/` directory inside your working directory. Go to File -> New File -> R Script, and write an R script to load in the gapminder dataset. Save the script in your `scripts/` directory.
 
 Run the script using the `source` function, using the file path
 as its argument (or by pressing the "source" button in RStudio).
 
 :::::::::::::::  solution
 
-## Solution to Challenge 3
+## Solution to Challenge 2
 
 The `source` function can be used to use a script within a script.
 Assume you would like to load the same type of file over and over
@@ -578,7 +343,7 @@ source(file = "scripts/load-gapminder.R")
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 4
+## Challenge 3
 
 Read the output of `str(gapminder)` again;
 this time, use what you've learned about lists and vectors,
@@ -602,9 +367,6 @@ The object `gapminder` is a data frame with columns
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
-- Use `cbind()` to add a new column to a data frame.
-- Use `rbind()` to add a new row to a data frame.
-- Remove rows from a data frame.
 - Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame.
 - Read in a csv file using `read.csv()`.
 - Understand what `length()` of a data frame represents.

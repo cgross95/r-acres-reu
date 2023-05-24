@@ -41,16 +41,22 @@ Senegal? Can you calculate the average income for countries on the continent of 
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
-## Before Starting The Workshop
+## Accessing RStudio
 
-Please ensure you have the latest version of R and RStudio installed on your machine. This is important, as some packages used in the workshop may not install correctly (or at all) if R is not up to date.
+To use RStudio on the HPCC, we will use OnDemand. Log in here: [https://ondemand.hpcc.msu.edu/pun/sys/dashboard/](https://ondemand.hpcc.msu.edu/pun/sys/dashboard/).
 
-- [Download and install the latest version of R here](https://www.r-project.org/)
-- [Download and install RStudio here](https://www.rstudio.com/products/rstudio/download/#download)
+After logging in, from the Interactive Apps pull-down tab, choose RStudio Server.
+
+![](fig/OnDemand.png){alt='OnDemand with interactive apps'}
+
+In the settings for the interactive job, set "Number of hours" to 2 and "Number of cores per task" to 4. Leave the remaining entries blank and click the Launch button.
+
+![](fig/OnDemandSubmit.png){alt='OnDemand with job submission options set as described above'}
+
+The screenshots below use the desktop version of R which will be very similar to the online version that we will use in this workshop.
+
 
 ## Introduction to RStudio
-
-Welcome to the R portion of the Software Carpentry workshop.
 
 Throughout this lesson, we're going to teach you some of the fundamentals of
 the R language as well as some best practices for organizing code for
@@ -571,8 +577,17 @@ x <- 1:5
 [1]  2  4  8 16 32
 ```
 
-This is incredibly powerful; we will discuss this further in an
-upcoming lesson.
+To create vectors, you can use the **c**ombine command:
+
+
+```r
+my_vec <- c(1, 3, 5)
+2^my_vec
+```
+
+```{.output}
+[1]  2  8 32
+```
 
 ## Managing your environment
 
@@ -643,7 +658,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x5626e6020c58>
+<bytecode: 0x5573a4d89c58>
 <environment: namespace:base>
 ```
 
@@ -842,7 +857,7 @@ rm(age, mass)
 
 ## Challenge 5
 
-Install the following packages: `ggplot2`, `plyr`, `gapminder`
+Install the following packages: `ggplot2`, `gapminder`
 
 :::::::::::::::  solution
 
@@ -853,7 +868,6 @@ We can use the `install.packages()` command to install the required packages.
 
 ```r
 install.packages("ggplot2")
-install.packages("plyr")
 install.packages("gapminder")
 ```
 
@@ -861,7 +875,7 @@ An alternate solution, to install multiple packages with a single `install.packa
 
 
 ```r
-install.packages(c("ggplot2", "plyr", "gapminder"))
+install.packages(c("ggplot2", "gapminder"))
 ```
 
 :::::::::::::::::::::::::
