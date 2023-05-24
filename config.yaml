@@ -71,6 +71,8 @@ learners:
 # Information for Instructors
 instructors: 
 
+profiles:
+
 # Customisation ---------------------------------------------
 #
 # This space below is where custom yaml items (e.g. pinning
