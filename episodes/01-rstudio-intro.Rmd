@@ -42,25 +42,6 @@ Senegal? Can you calculate the average income for countries on the continent of 
 By the end of these lessons you will be able to do things like plot the populations
 for all of these countries in under a minute!
 
-## Accessing RStudio
-
-To use RStudio on the HPCC, we will use OnDemand. Log in here: [https://ondemand.hpcc.msu.edu/pun/sys/dashboard/](https://ondemand.hpcc.msu.edu/pun/sys/dashboard/).
-
-After logging in, from the Interactive Apps pull-down tab, choose RStudio Server.
-
-![](fig/OnDemand.png){alt='OnDemand with interactive apps'}
-
-In the settings for the interactive job, set "Number of hours" to 3 and "Number of cores per task" to 4. Leave the remaining entries blank and click the Launch button.
-
-![](fig/OnDemandSubmit.png){alt='OnDemand with job submission options set as described above'}
-
-You will be taken to a list of your interactive jobs. After queuing, your job will start running, and you can access RStudio by clicking the "Connect to RStudio Server" button.
-
-![](fig/OnDemandStart.png){alt='A card showing a running RStudio job with a button to connect to the server.'}
-
-The screenshots below use the desktop version of RStudio which will be very similar to the online version that we will use in this workshop.
-
-
 ## Introduction to RStudio
 
 Throughout this lesson, we're going to teach you some of the fundamentals of
