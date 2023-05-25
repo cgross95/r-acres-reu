@@ -62,7 +62,6 @@ contact: 'grosscra@msu.edu'
 episodes: 
 - 01-rstudio-intro.Rmd
 - 05-data-structures-part2.Rmd
-- 06-data-subsetting.Rmd
 - 08-plot-ggplot2.Rmd
 
 # Information for Learners

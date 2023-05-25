@@ -177,7 +177,7 @@ A list on the other hand can contain multiple types:
 
 
 ```r
-ex_list <- list_example <- list(1, "a", TRUE, 1+4i)
+ex_list <- list(1, "a", TRUE, 1+4i)
 ```
 
 :::
@@ -353,7 +353,7 @@ If there are any parts you can't interpret, discuss with your neighbors!
 
 :::::::::::::::  solution
 
-## Solution to Challenge 4
+## Solution to Challenge 3
 
 The object `gapminder` is a data frame with columns
 
@@ -364,6 +364,220 @@ The object `gapminder` is a data frame with columns
 :::::::::::::::::::::::::
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+## Subsetting data frames
+
+Generally, use the `[]` operator to subset data. Starting with a small vector, we can get the first entry.
+
+
+```r
+x <- c("a", "b", "c")
+x[1]
+```
+
+```{.output}
+[1] "a"
+```
+
+
+:::::::::::::::::::::::::::::::::::::::::  callout
+
+## Vector numbering in R starts at 1
+
+In many programming languages (C and Python, for example), the first
+element of a vector has an index of 0. In R, the first element is 1.
+
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+Since a data frame is just a list of its columns, using `[` to index will work the same way as a list. It turns out that the resulting object will also be a data frame:
+
+
+```r
+head(gapminder[3])
+```
+
+```{.output}
+       pop
+1  8425333
+2  9240934
+3 10267083
+4 11537966
+5 13079460
+6 14880372
+```
+
+On the other hand, `[[` will extract *a single column* as a vector:
+
+
+```r
+head(gapminder[["lifeExp"]])
+```
+
+```{.output}
+[1] 28.801 30.332 31.997 34.020 36.088 38.438
+```
+
+And as we've seen, `$` provides a convenient shorthand to extract columns by name:
+
+
+```r
+head(gapminder$year)
+```
+
+```{.output}
+[1] 1952 1957 1962 1967 1972 1977
+```
+
+With two arguments, `[` can index rows and columns:
+
+
+```r
+gapminder[1:3,]
+```
+
+```{.output}
+      country year      pop continent lifeExp gdpPercap
+1 Afghanistan 1952  8425333      Asia  28.801  779.4453
+2 Afghanistan 1957  9240934      Asia  30.332  820.8530
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+```
+
+If we subset a single row, the result will be a data frame (because
+the elements are mixed types):
+
+
+```r
+gapminder[3,]
+```
+
+```{.output}
+      country year      pop continent lifeExp gdpPercap
+3 Afghanistan 1962 10267083      Asia  31.997  853.1007
+```
+
+But for a single column the result will be a vector (this can
+be changed with the third argument, `drop = FALSE`).
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge 4
+
+Fix each of the following common data frame subsetting errors:
+
+1. Extract observations collected for the year 1957
+  
+  
+  ```r
+  gapminder[gapminder$year = 1957,]
+  ```
+
+2. Extract all columns except 1 through to 4
+  
+  
+  ```r
+  gapminder[,-1:4]
+  ```
+
+3. Extract the rows where the life expectancy is longer the 80 years
+  
+  
+  ```r
+  gapminder[gapminder$lifeExp > 80]
+  ```
+
+4. Extract the first row, and the fourth and fifth columns
+  (`continent` and `lifeExp`).
+  
+  
+  ```r
+  gapminder[1, 4, 5]
+  ```
+
+5. Advanced: extract rows that contain information for the years 2002
+  and 2007
+  
+  
+  ```r
+  gapminder[gapminder$year == 2002 | 2007,]
+  ```
+
+:::::::::::::::  solution
+
+## Solution to challenge 4
+
+Fix each of the following common data frame subsetting errors:
+
+1. Extract observations collected for the year 1957
+  
+  
+  ```r
+  # gapminder[gapminder$year = 1957,]
+  gapminder[gapminder$year == 1957,]
+  ```
+
+2. Extract all columns except 1 through to 4
+  
+  
+  ```r
+  # gapminder[,-1:4]
+  gapminder[,-c(1:4)]
+  ```
+
+3. Extract the rows where the life expectancy is longer than 80 years
+  
+  
+  ```r
+  # gapminder[gapminder$lifeExp > 80]
+  gapminder[gapminder$lifeExp > 80,]
+  ```
+
+4. Extract the first row, and the fourth and fifth columns
+  (`continent` and `lifeExp`).
+  
+  
+  ```r
+  # gapminder[1, 4, 5]
+  gapminder[1, c(4, 5)]
+  ```
+
+5. Advanced: extract rows that contain information for the years 2002
+  and 2007
+  
+  
+  ```r
+  # gapminder[gapminder$year == 2002 | 2007,]
+  gapminder[gapminder$year == 2002 | gapminder$year == 2007,]
+  gapminder[gapminder$year %in% c(2002, 2007),]
+  ```
+
+:::::::::::::::::::::::::
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+## Challenge 5
+
+1. Why does `gapminder[1:20]` return an error? How does it differ from `gapminder[1:20, ]`?
+
+2. Create a new `data.frame` called `gapminder_small` that only contains rows 1 through 9
+  and 19 through 23. You can do this in one or two steps.
+
+:::::::::::::::  solution
+
+## Solution to challenge 5
+
+1. `gapminder` is a data.frame so needs to be subsetted on two dimensions. `gapminder[1:20, ]` subsets the data to give the first 20 rows and all columns.
+
+2. 
+
+```r
+gapminder_small <- gapminder[c(1:9, 19:23),]
+```
+
+:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::: keypoints
 
