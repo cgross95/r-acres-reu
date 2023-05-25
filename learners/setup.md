@@ -2,7 +2,7 @@
 title: Setup
 ---
 
-::: challenge
+::: prereq
 
 ## Get started with RStudio on the HPCC
 

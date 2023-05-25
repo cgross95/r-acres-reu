@@ -8,6 +8,7 @@ source: Rmd
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Display basic properties of data frames including size and class of the columns, names, and first few rows.
+- Subset data frames by index and name.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -429,6 +430,8 @@ gapminder_small <- gapminder[c(1:9, 19:23),]
 - Use `str()`, `summary()`, `nrow()`, `ncol()`, `dim()`, `colnames()`, `rownames()`, `head()`, and `typeof()` to understand the structure of a data frame.
 - Read in a csv file using `read.csv()`.
 - Understand what `length()` of a data frame represents.
+- Indexing in R starts at 1, not 0.
+- Access individual values by location using `[]`.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
