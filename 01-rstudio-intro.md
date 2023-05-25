@@ -49,11 +49,15 @@ After logging in, from the Interactive Apps pull-down tab, choose RStudio Server
 
 ![](fig/OnDemand.png){alt='OnDemand with interactive apps'}
 
-In the settings for the interactive job, set "Number of hours" to 2 and "Number of cores per task" to 4. Leave the remaining entries blank and click the Launch button.
+In the settings for the interactive job, set "Number of hours" to 3 and "Number of cores per task" to 4. Leave the remaining entries blank and click the Launch button.
 
 ![](fig/OnDemandSubmit.png){alt='OnDemand with job submission options set as described above'}
 
-The screenshots below use the desktop version of R which will be very similar to the online version that we will use in this workshop.
+You will be taken to a list of your interactive jobs. After queuing, your job will start running, and you can access RStudio by clicking the "Connect to RStudio Server" button.
+
+![](fig/OnDemandStart.png){alt='A card showing a running RStudio job with a button to connect to the server.'}
+
+The screenshots below use the desktop version of RStudio which will be very similar to the online version that we will use in this workshop.
 
 
 ## Introduction to RStudio
@@ -658,7 +662,7 @@ function (name, pos = -1L, envir = as.environment(pos), all.names = FALSE,
     }
     else all.names
 }
-<bytecode: 0x5573a4d89c58>
+<bytecode: 0x5587e00b4c58>
 <environment: namespace:base>
 ```
 
