@@ -18,7 +18,7 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="Software Carpentry" src="assets/images/software-logo.svg"></div>
+        <img alt="ACRES REU" src="assets/images/acres-logo.png"></div>
     </div>
     <div class="selector-container ">
       
@@ -229,20 +229,19 @@ data</em></p>
 <p>The goal of this lesson is to teach novice programmers to write
 modular code and best practices for using R for data analysis. R is
 commonly used in many scientific disciplines for statistical analysis
-and its array of third-party packages. We find that many scientists who
-come to Software Carpentry workshops use R and want to learn more. The
-emphasis of these materials is to give attendees a strong foundation in
-the fundamentals of R, and to teach best practices for scientific
-computing: breaking down analyses into modular units, task automation,
-and encapsulation.</p>
+and its array of third-party packages. The emphasis of these materials
+is to give attendees a strong foundation in the fundamentals of R, and
+to teach best practices for scientific computing: breaking down analyses
+into modular units, task automation, and encapsulation.</p>
 <p>Note that this workshop will focus on teaching the fundamentals of
 the programming language R, and will not teach statistical analysis.</p>
-<p>The lesson contains more material than can be taught in a day. The <a href="instructor-notes.html">instructor notes page</a> has some
-suggested lesson plans suitable for a one or half day workshop.</p>
 <p>A variety of third party packages are used throughout this workshop.
 These are not necessarily the best, nor are they comprehensive, but they
 are packages we find useful, and have been chosen primarily for their
 usability.</p>
+<p>This workshop is based off of the (much longer!) <a href="https://swcarpentry.github.io/r-novice-gapminder/" class="external-link">R for
+Reproducible Scientific Analysis lesson</a> developed as part of the <a href="https://software-carpentry.org/lessons/" class="external-link">Software Carpentry
+curriculum</a>. For more information on the Carpentries, see <a href="https://carpentries.org/" class="external-link">their homepage</a>.</p>
 <div id="prerequisites" class="callout prereq">
 <div class="callout-square">
 <i class="callout-icon" data-feather="check"></i>
@@ -258,19 +257,38 @@ path.</p>
 </div>
 </div>
 </div>
+<p>As you enter, please follow the setup instructions so we can get
+right into the action!</p>
 
 
-      <section id="setup"><p>This lesson assumes you have R and RStudio installed on your
-computer.</p>
+      <section id="setup"><div id="get-started-with-rstudio-on-the-hpcc" class="callout discussion">
+<div class="callout-square">
+<i class="callout-icon" data-feather="message-circle"></i>
+</div>
+<div id="get-started-with-rstudio-on-the-hpcc" class="callout-inner">
+<h3 class="callout-title">Get started with RStudio on the HPCC<a class="anchor" aria-label="anchor" href="#get-started-with-rstudio-on-the-hpcc"></a>
+</h3>
+<div class="callout-content">
+<p>To use RStudio on the HPCC, we will use OnDemand. Log in here: <a href="https://ondemand.hpcc.msu.edu/pun/sys/dashboard/" class="external-link">https://ondemand.hpcc.msu.edu/pun/sys/dashboard/</a>.</p>
+<p>After logging in, from the Interactive Apps pull-down tab, choose
+RStudio Server.</p>
+<figure><img src="fig/OnDemand.png" alt="OnDemand with interactive apps" class="figure mx-auto d-block"></figure><p>In the settings for the interactive job, set “Number of hours” to 3
+and “Number of cores per task” to 4. Leave the remaining entries blank
+and click the Launch button.</p>
+<figure><img src="fig/OnDemandSubmit.png" alt="OnDemand with job submission options set as described above" class="figure mx-auto d-block"></figure><p>You will be taken to a list of your interactive jobs. After queuing,
+your job will start running, and you can access RStudio by clicking the
+“Connect to RStudio Server” button.</p>
+<figure><img src="fig/OnDemandStart.png" alt="A card showing a running RStudio job with a button to connect to the server." class="figure mx-auto d-block"></figure></div>
+</div>
+</div>
+<p>If you would like to install R and RStudio on your computer in the
+future, check out the following links:</p>
 <ul><li>
 <a href="https://www.r-project.org/" class="external-link">Download and install the latest
 version of R</a>.</li>
 <li>
 <a href="https://www.rstudio.com/products/rstudio/download/#download" class="external-link">Download
-and install RStudio</a>. RStudio is an application (an integrated
-development environment or IDE) that facilitates the use of R and offers
-a number of nice additional features. You will need the free Desktop
-version for your computer.</li>
+and install RStudio</a>.</li>
 </ul></section></main><nav class="bottom-pagination mx-md-4" aria-label="Next Chapter"><!-- content for small screens --><div class="d-block d-sm-block d-md-none">
         <a class="chapter-link float-end" href="01-rstudio-intro.html">Next<i aria-hidden="true" class="small-arrow" data-feather="arrow-right"></i></a>
       </div>
@@ -300,7 +318,7 @@ version for your computer.</li>
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/cgross95/varnish-r-acres-reu/tree/c6fc182df2371ba6c36bbcea6d209cd1ab78a8ad" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer></div> <!-- / div.container -->
 	<div id="to-top">
@@ -321,8 +339,8 @@ version for your computer.</li>
   "url": "https://cgross95.github.io/r-acres-reu/index.html",
   "identifier": "https://cgross95.github.io/r-acres-reu/index.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2023-05-24",
-  "datePublished": "2023-05-24"
+  "dateModified": "2023-05-25",
+  "datePublished": "2023-05-25"
 }
 
   </script><script>

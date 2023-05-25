@@ -33,7 +33,7 @@
   <div class="container-fluid top-nav-container">
     <div class="col-md-6">
       <div class="large-logo">
-        <img alt="Software Carpentry" src="assets/images/software-logo.svg">
+        <img alt="ACRES REU" src="assets/images/acres-logo.png">
 </div>
     </div>
     <div class="selector-container ">
@@ -272,7 +272,7 @@
         
 <section id="aio-01-rstudio-intro"><p>Content from <a href="01-rstudio-intro.html">Introduction to R and RStudio</a></p>
 <hr>
-<p> Last updated on 2023-05-24 | 
+<p> Last updated on 2023-05-25 | 
         
         <a href="https://github.com/cgross95/r-acres-reu/edit/main/episodes/01-rstudio-intro.Rmd" class="external-link">Edit this page <i aria-hidden="true" data-feather="edit"></i></a></p>
 <div class="text-end">
@@ -332,11 +332,15 @@ for all of these countries in under a minute!</p>
 <p>To use RStudio on the HPCC, we will use OnDemand. Log in here: <a href="https://ondemand.hpcc.msu.edu/pun/sys/dashboard/" class="external-link">https://ondemand.hpcc.msu.edu/pun/sys/dashboard/</a>.</p>
 <p>After logging in, from the Interactive Apps pull-down tab, choose
 RStudio Server.</p>
-<figure><img src="fig/OnDemand.png" alt="OnDemand with interactive apps" class="figure mx-auto d-block"></figure><p>In the settings for the interactive job, set “Number of hours” to 2
+<figure><img src="fig/OnDemand.png" alt="OnDemand with interactive apps" class="figure mx-auto d-block"></figure><p>In the settings for the interactive job, set “Number of hours” to 3
 and “Number of cores per task” to 4. Leave the remaining entries blank
 and click the Launch button.</p>
-<figure><img src="fig/OnDemandSubmit.png" alt="OnDemand with job submission options set as described above" class="figure mx-auto d-block"></figure><p>The screenshots below use the desktop version of R which will be very
-similar to the online version that we will use in this workshop.</p>
+<figure><img src="fig/OnDemandSubmit.png" alt="OnDemand with job submission options set as described above" class="figure mx-auto d-block"></figure><p>You will be taken to a list of your interactive jobs. After queuing,
+your job will start running, and you can access RStudio by clicking the
+“Connect to RStudio Server” button.</p>
+<figure><img src="fig/OnDemandStart.png" alt="A card showing a running RStudio job with a button to connect to the server." class="figure mx-auto d-block"></figure><p>The screenshots below use the desktop version of RStudio which will
+be very similar to the online version that we will use in this
+workshop.</p>
 </section><section id="introduction-to-rstudio"><h2 class="section-heading">Introduction to RStudio<a class="anchor" aria-label="anchor" href="#introduction-to-rstudio"></a>
 </h2>
 <hr class="half-width">
@@ -1020,7 +1024,7 @@ instead of a listing of objects.</p>
     }
     else all.names
 }
-&lt;bytecode: 0x5573a4d89c58&gt;
+&lt;bytecode: 0x5587e00b4c58&gt;
 &lt;environment: namespace:base&gt;</code></pre>
 </div>
 <p>What’s going on here?</p>
@@ -1687,7 +1691,7 @@ before a search term, e.g., <code>??random</code>.</p>
   Solution to Challenge 1
   </h4>
 </button>
-<div id="collapseSolution1" class="accordion-collapse collapse" aria-labelledby="headingSolution1" data-bs-parent="#accordionSolution1">
+<div id="collapseSolution1" class="accordion-collapse collapse" data-bs-parent="#accordionSolution1" aria-labelledby="headingSolution1">
 <div class="accordion-body">
 <p>To check the last few lines it’s relatively simple as R already has a
 function for this:</p>
@@ -1750,7 +1754,7 @@ RStudio).</p>
   Solution to Challenge 2
   </h4>
 </button>
-<div id="collapseSolution2" class="accordion-collapse collapse" aria-labelledby="headingSolution2" data-bs-parent="#accordionSolution2">
+<div id="collapseSolution2" class="accordion-collapse collapse" data-bs-parent="#accordionSolution2" aria-labelledby="headingSolution2">
 <div class="accordion-body">
 <p>The <code>source</code> function can be used to use a script within a
 script. Assume you would like to load the same type of file over and
@@ -1803,7 +1807,7 @@ neighbors!</p>
   Solution to Challenge 4
   </h4>
 </button>
-<div id="collapseSolution3" class="accordion-collapse collapse" aria-labelledby="headingSolution3" data-bs-parent="#accordionSolution3">
+<div id="collapseSolution3" class="accordion-collapse collapse" data-bs-parent="#accordionSolution3" aria-labelledby="headingSolution3">
 <div class="accordion-body">
 <p>The object <code>gapminder</code> is a data frame with columns</p>
 <ul>
@@ -3884,7 +3888,7 @@ scale transformation, and grouping.</li>
         <p><a href="https://creativecommons.org/licenses/by-sa/4.0/" class="external-link">Template licensed under CC-BY 4.0</a> by <a href="https://carpentries.org" class="external-link">The Carpentries</a></p>
         <p>Built with <a href="https://github.com/carpentries/sandpaper/tree/0.12.0" class="external-link">sandpaper (0.12.0)</a>,
         <a href="https://github.com/carpentries/pegboard" class="external-link">pegboard (0.5.3)</a>,
-      and <a href="https://github.com/carpentries/varnish/tree/0.2.16" class="external-link">varnish (0.2.16)</a>.</p>
+      and <a href="https://github.com/cgross95/varnish-r-acres-reu/tree/c6fc182df2371ba6c36bbcea6d209cd1ab78a8ad" class="external-link">varnish (0.2.17)</a>.</p>
 			</div>
 		</footer>
 </div> <!-- / div.container -->
@@ -3906,8 +3910,8 @@ scale transformation, and grouping.</li>
   "url": "https://cgross95.github.io/r-acres-reu/aio.html",
   "identifier": "https://cgross95.github.io/r-acres-reu/aio.html",
   "dateCreated": "2015-04-18",
-  "dateModified": "2023-05-24",
-  "datePublished": "2023-05-24"
+  "dateModified": "2023-05-25",
+  "datePublished": "2023-05-25"
 }
 
   </script><script>
