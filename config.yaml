@@ -9,6 +9,7 @@
 # cp: Carpentries (to use for instructor training for instance)
 # incubator: The Carpentries Incubator
 carpentry: 'swc'
+varnish: grosscra/varnish-r-acres-reu
 
 # Overall title for pages.
 title: 'Introduction to R'
